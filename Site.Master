@@ -1,0 +1,88 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="ShareLife.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Blood Donor Management System</title>
+    <link href="Style.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div class="header-container">
+                <a href="Default.aspx" class="logo">
+                    <div class="logo-icon-wrap">
+                        <svg class="logo-drop-svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                        </svg>
+                        <span class="logo-heart-inner">&#9829;</span>
+                    </div>
+                    <div class="logo-text-block">
+                        <span class="logo-brand">ShareLife</span>
+                        <span class="logo-tagline">A Blood Donor Management System</span>
+                    </div>
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="Default.aspx" id="navHome" runat="server" class="nav-btn-home"><span class="nav-icon">&#127968;</span> HOME</a></li>
+                        <li><a href="Register.aspx" id="navRegister" runat="server"><span class="nav-icon">&#128100;+</span> REGISTER</a></li>
+                        <li><a href="Search.aspx" id="navSearch" runat="server"><span class="nav-icon">&#128065;</span> SEARCH DONOR</a></li>
+                        <li><a href="ViewDonors.aspx" id="navView" runat="server"><span class="nav-icon">&#128101;</span> VIEW DONORS</a></li>
+                        <li><a href="About.aspx" id="navAbout" runat="server"><span class="nav-icon">&#8505;</span> ABOUT</a></li>
+                    </ul>
+                </nav>
+
+                <%-- Auth section --%>
+                <div class="nav-auth">
+                    <asp:Panel ID="pnlLoggedOut" runat="server">
+                        <a href="Login.aspx" class="btn-nav-login">Login</a>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlLoggedIn" runat="server" Visible="false">
+                        <span class="nav-username">&#128100; <asp:Literal ID="litUsername" runat="server"></asp:Literal></span>
+                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn-nav-logout" OnClick="btnLogout_Click">Logout</asp:LinkButton>
+                    </asp:Panel>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-icon-box">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong>Donate Blood, Donate Life.</strong>
+                        <p>Be a Hero.</p>
+                    </div>
+                </div>
+
+                <div class="footer-divider-line"></div>
+
+                <div class="footer-col footer-col-center">
+                    <div class="footer-drop-icon">&#129656;</div>
+                    <p>Together we can create a better tomorrow.</p>
+                </div>
+
+                <div class="footer-divider-line"></div>
+
+                <div class="footer-col footer-col-right">
+                    <p>&copy; <%: DateTime.Now.Year %> ShareLife.</p>
+                    <p>All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
